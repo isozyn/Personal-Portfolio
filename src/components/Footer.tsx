@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Phone, ArrowUp } from "lucide-react";
+import { Linkedin, Mail, Phone, ArrowUp, GithubIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
@@ -13,14 +13,14 @@ const Footer = () => {
         <div className="flex justify-center items-center">
           {/* Social links */}
           <div className="flex space-x-4">
-            <a href="#" className="bg-gold/20 p-3 rounded-full hover:bg-gold transition-colors duration-300">
+            <a href="https://www.linkedin.com/in/isma-eel-cozyn-22a454229/" target="_blank" rel="noopener noreferrer" className="bg-gold/20 p-3 rounded-full hover:bg-gold transition-colors duration-300">
               <Linkedin className="text-gold" size={20} />
             </a>
-            <a href="#" className="bg-gold/20 p-3 rounded-full hover:bg-gold transition-colors duration-300">
+            <a onClick={() => window.location.href = "mailto:Isma-eel.Cozyn@capaciti.org.za"} className="bg-gold/20 p-3 rounded-full hover:bg-gold transition-colors duration-300">
               <Mail className="text-gold" size={20} />
             </a>
-            <a href="#" className="bg-gold/20 p-3 rounded-full hover:bg-gold transition-colors duration-300">
-              <Phone className="text-gold" size={20} />
+            <a href="https://github.com/isozyn" target="_blank" rel="noopener noreferrer" className="bg-gold/20 p-3 rounded-full hover:bg-gold transition-colors duration-300">
+              <GithubIcon className="text-gold" size={20} />
             </a>
           </div>
         </div>

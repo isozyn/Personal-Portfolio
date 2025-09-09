@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -15,10 +14,11 @@ const HeroSection = () => {
             <p className="text-xl lg:text-2xl text-charcoal-light font-medium">
               Digital Associate 
             </p>
-          </div>
           
+          </div>
+          <h3 className="text-lg font-semibold text-primary">Aspiring Software Engineer with a Passion for Innovation</h3>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Set your heart ablaze with a portfolio that ignites your passion and showcases your brilliance. Let's create something extraordinary together!
+            I'm driven to build impactful software solutions that blend creativity with cutting-edge technology. Currently, I'm sharpening my skills through Capaciti's intensive training program, where I’m gaining hands-on experience in modern development practices. With a strong foundation in computer science and growing expertise in artificial intelligence, I’m eager to tackle complex challenges and grow as a software engineer.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -47,11 +47,6 @@ const HeroSection = () => {
             <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-charcoal rounded-full opacity-60"></div>
           </div>
         </div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ArrowDown className="text-muted-foreground" size={24} />
       </div>
     </section>
   );

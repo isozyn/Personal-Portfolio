@@ -42,7 +42,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("#home")}
             className="font-serif text-xl font-bold text-primary hover:text-gold transition-colors"
           >
-            Portfolio
+            I Cozyn
           </button>
 
           {/* Desktop Navigation */}
