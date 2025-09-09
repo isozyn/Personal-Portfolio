@@ -2,8 +2,69 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Linkedin, MapPin, Send, Calendar } from "lucide-react";
+import { useState } from "react";
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Using Formspree for form handling - replace with your Formspree endpoint
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          company: formData.company,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section className="py-20 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -24,15 +85,30 @@ const ContactSection = () => {
             <div className="bg-card p-8 rounded-lg shadow-lg border">
               <h3 className="font-serif text-2xl font-semibold text-primary mb-6">Send a Message</h3>
               
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {submitStatus === 'success' && (
+                  <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+                    Thanks for your message! I'll get back to you soon.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                    Sorry, there was an error sending your message. Please try again or email me directly.
+                  </div>
+                )}
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       First Name *
                     </label>
                     <Input 
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       placeholder="John"
                       className="h-12"
+                      required
                     />
                   </div>
                   <div>
@@ -40,8 +116,12 @@ const ContactSection = () => {
                       Last Name *
                     </label>
                     <Input 
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       placeholder="Doe"
                       className="h-12"
+                      required
                     />
                   </div>
                 </div>
@@ -53,8 +133,12 @@ const ContactSection = () => {
                     </label>
                     <Input 
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       placeholder="john.doe@company.com"
                       className="h-12"
+                      required
                     />
                   </div>
                   <div>
@@ -62,6 +146,9 @@ const ContactSection = () => {
                       Company
                     </label>
                     <Input 
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
                       placeholder="Your Company"
                       className="h-12"
                     />
@@ -70,44 +157,41 @@ const ContactSection = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Project Type
+                    Subject *
                   </label>
-                  <select className="w-full h-12 px-3 border border-input bg-background rounded-md text-foreground">
-                    <option value="">Select a service</option>
-                    <option value="strategy">Strategic Consulting</option>
-                    <option value="digital">Digital Transformation</option>
-                    <option value="operations">Operational Excellence</option>
-                    <option value="ma">M&A Support</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Project Details *
-                  </label>
-                  <Textarea 
-                    placeholder="Tell me about your project, challenges, and objectives..."
-                    className="min-h-32"
+                  <Input 
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    placeholder="What can I help you with?"
+                    className="h-12"
+                    required
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Timeline
+                    Message *
                   </label>
-                  <select className="w-full h-12 px-3 border border-input bg-background rounded-md text-foreground">
-                    <option value="">When would you like to start?</option>
-                    <option value="immediate">Immediate (within 2 weeks)</option>
-                    <option value="month">Within 1 month</option>
-                    <option value="quarter">Within 3 months</option>
-                    <option value="flexible">Timeline is flexible</option>
-                  </select>
+                  <Textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Tell me about your project, goals, or how I can help you..."
+                    className="min-h-32"
+                    required
+                  />
                 </div>
 
-                <Button variant="professional" size="lg" className="w-full">
+                <Button 
+                  type="submit" 
+                  variant="professional" 
+                  size="lg" 
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
                   <Send className="mr-2" size={18} />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </div>
@@ -124,7 +208,7 @@ const ContactSection = () => {
                   <Mail className="text-gold mt-1" size={18} />
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <p className="text-muted-foreground">john.professional@consulting.com</p>
+                    <p className="text-muted-foreground">Isma-eel.Cozyn@Capaciti.org.za</p>
                   </div>
                 </div>
 
@@ -132,7 +216,7 @@ const ContactSection = () => {
                   <Phone className="text-gold mt-1" size={18} />
                   <div>
                     <p className="font-medium text-foreground">Phone</p>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-muted-foreground">+27 76 982 7866</p>
                   </div>
                 </div>
 
@@ -140,7 +224,7 @@ const ContactSection = () => {
                   <MapPin className="text-gold mt-1" size={18} />
                   <div>
                     <p className="font-medium text-foreground">Location</p>
-                    <p className="text-muted-foreground">New York, NY</p>
+                    <p className="text-muted-foreground">Cape Town, Western Cape, South Africa</p>
                   </div>
                 </div>
 
@@ -148,40 +232,10 @@ const ContactSection = () => {
                   <Linkedin className="text-gold mt-1" size={18} />
                   <div>
                     <p className="font-medium text-foreground">LinkedIn</p>
-                    <p className="text-muted-foreground">linkedin.com/in/johnprofessional</p>
+                    <p className="text-muted-foreground">https://www.linkedin.com/in/isma-eel-cozyn-22a454229/</p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Availability */}
-            <div className="bg-muted p-6 rounded-lg">
-              <h4 className="font-serif text-lg font-semibold text-primary mb-4">Current Availability</h4>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2">
-                  <Calendar className="text-gold" size={16} />
-                  <span className="text-sm text-foreground">Accepting new projects</span>
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  Typical response time: 24 hours
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  Next available start date: March 2024
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="bg-charcoal p-6 rounded-lg text-center">
-              <h4 className="font-serif text-lg font-semibold text-white mb-3">
-                Schedule a Consultation
-              </h4>
-              <p className="text-silver-light text-sm mb-4">
-                Book a 30-minute strategic consultation to discuss your project.
-              </p>
-              <Button variant="gold" size="lg" className="w-full">
-                Book Consultation
-              </Button>
             </div>
           </div>
         </div>

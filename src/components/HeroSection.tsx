@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
-import professionalPortrait from "@/assets/professional-portrait.jpg";
 
 const HeroSection = () => {
   return (
@@ -10,24 +9,24 @@ const HeroSection = () => {
         <div className="text-center lg:text-left space-y-8">
           <div className="space-y-4">
             <h1 className="font-serif text-5xl lg:text-7xl font-bold text-primary leading-tight">
-              John <span className="text-gold">Professional</span>
+              Isma-eel <span className="text-gold"><br />
+              Cozyn</span>
             </h1>
             <p className="text-xl lg:text-2xl text-charcoal-light font-medium">
-              Strategic Business Consultant & Digital Solutions Expert
+              Digital Associate 
             </p>
           </div>
           
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Transforming businesses through innovative strategies, cutting-edge technology, 
-            and proven methodologies. Delivering excellence with precision and professionalism.
+            Set your heart ablaze with a portfolio that ignites your passion and showcases your brilliance. Let's create something extraordinary together!
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Button variant="professional" size="lg" className="font-medium">
-              View My Work
+              <a href="https://github.com/isozyn" target="_blank" rel="noopener noreferrer">View my GitHub</a>
             </Button>
             <Button variant="outline-professional" size="lg" className="font-medium">
-              Download Resume
+              <a href="/Isma-eel Cozyn Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
             </Button>
           </div>
         </div>
@@ -38,7 +37,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-charcoal/10 rounded-full blur-3xl"></div>
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
               <img 
-                src={professionalPortrait} 
+                src="public/shared image (3).jfif" 
                 alt="Professional Portrait"
                 className="w-full h-full object-cover"
               />

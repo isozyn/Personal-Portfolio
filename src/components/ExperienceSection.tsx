@@ -7,11 +7,7 @@ const experiences = [
     location: "New York, NY",
     period: "2020 - Present",
     description: "Leading digital transformation initiatives for Fortune 500 clients, driving operational efficiency improvements averaging 25%.",
-    achievements: [
-      "Managed $50M+ transformation projects",
-      "Led cross-functional teams of 15+ consultants",
-      "Developed proprietary analytics frameworks"
-    ]
+    
   },
   {
     title: "Business Development Director",
@@ -19,11 +15,7 @@ const experiences = [
     location: "Chicago, IL", 
     period: "2018 - 2020",
     description: "Spearheaded business development initiatives and client relationship management for the technology practice.",
-    achievements: [
-      "Generated $15M in new revenue annually",
-      "Expanded client portfolio by 40%",
-      "Implemented agile methodologies"
-    ]
+    
   },
   {
     title: "Strategy Manager",
@@ -31,11 +23,7 @@ const experiences = [
     location: "Boston, MA",
     period: "2015 - 2018", 
     description: "Delivered strategic recommendations for private equity portfolio companies and Fortune 1000 enterprises.",
-    achievements: [
-      "Supported 20+ successful exits",
-      "Improved EBITDA margins by 18% average",
-      "Mentored junior consultants"
-    ]
+    
   },
   {
     title: "Associate Consultant",
@@ -43,11 +31,7 @@ const experiences = [
     location: "Boston, MA",
     period: "2012 - 2015",
     description: "Conducted market analysis and competitive intelligence for clients across multiple industries.",
-    achievements: [
-      "Delivered 25+ strategic assessments",
-      "Recognized as top performer 3 years running",
-      "Specialized in healthcare & technology"
-    ]
+    
   }
 ];
 
@@ -106,18 +90,7 @@ const ExperienceSection = () => {
                       </div>
                       
                       <p className="text-foreground mb-4 leading-relaxed">{exp.description}</p>
-                      
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-primary">Key Achievements:</h4>
-                        <ul className="space-y-1">
-                          {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="flex items-start">
-                              <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                              <span className="text-foreground text-sm">{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    
                     </div>
                   </div>
                 </div>

@@ -13,12 +13,16 @@ const AboutSection = () => {
           {/* Main bio */}
           <div className="lg:col-span-2 space-y-6">
             <p className="text-lg text-foreground leading-relaxed">
-              With over a decade of experience in strategic business consulting and digital transformation, 
-              I specialize in helping organizations navigate complex challenges and achieve sustainable growth. 
-              My approach combines analytical rigor with creative problem-solving, delivering solutions that 
-              drive measurable results.
+              I am a Digital Associate at Capaciti with a passion for building efficient and impactful digital solutions. My technical expertise spans multiple programming languages, including Python, Java, JavaScript, HTML, and CSS, which I use to develop both practical applications and creative projects.
             </p>
-            
+               
+            <p className="text-lg text-foreground leading-relaxed">
+               I hold a certification in Data Science with Python from the University of Cape Town (UCT), where I gained hands-on experience working with data analysis, visualization, and machine learning techniques.  
+            </p>  
+            <p className="text-lg text-foreground leading-relaxed">
+              Currently, I am at Capaciti, where I am expanding my knowledge, completing multiple courses, and gaining valuable certifications to strengthen my professional foundation.
+            </p>
+
             <p className="text-lg text-muted-foreground leading-relaxed">
               I believe in the power of collaboration, innovation, and excellence. Whether working with 
               Fortune 500 companies or emerging startups, I bring the same level of dedication and 
@@ -43,40 +47,7 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Quick stats */}
-          <div className="space-y-8">
-            <div className="bg-card p-6 rounded-lg shadow-lg border">
-              <h3 className="font-serif text-xl font-semibold text-primary mb-4">By the Numbers</h3>
-              <div className="space-y-4">
-                <div>
-                  <div className="text-3xl font-bold text-gold">150+</div>
-                  <div className="text-sm text-muted-foreground">Projects Completed</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-charcoal">12</div>
-                  <div className="text-sm text-muted-foreground">Years Experience</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-gold">95%</div>
-                  <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-muted p-6 rounded-lg">
-              <h4 className="font-serif text-lg font-semibold text-primary mb-3">Education</h4>
-              <div className="space-y-2 text-sm">
-                <div>
-                  <div className="font-medium text-foreground">MBA in Strategy</div>
-                  <div className="text-muted-foreground">Harvard Business School</div>
-                </div>
-                <div>
-                  <div className="font-medium text-foreground">BS in Business</div>
-                  <div className="text-muted-foreground">Stanford University</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>

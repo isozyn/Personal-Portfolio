@@ -3,74 +3,68 @@ import { ExternalLink, Github, Globe, Calendar, Code, Star } from "lucide-react"
 
 const projects = [
   {
-    title: "E-Commerce Analytics Dashboard",
-    category: "Full-Stack Development",
-    description: "Built a comprehensive analytics dashboard for e-commerce platforms with real-time data visualization, sales tracking, and customer insights.",
-    technologies: ["React", "Node.js", "MongoDB", "D3.js"],
-    features: "Real-time analytics, interactive charts, user segmentation",
+    title: "Refined Digital Tailor",
+    category: "Portfolio Website",
+    description: "Modern, responsive portfolio website with interactive certificate gallery, smooth animations, and professional design showcasing skills and achievements.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui", "Lucide Icons"],
+    features: "Certificate showcase, responsive design, smooth scrolling navigation, interactive UI components",
     status: "Live",
-    demoUrl: "#",
-    githubUrl: "#",
-    image: "bg-gradient-to-br from-charcoal to-charcoal-light"
+    demoUrl: "https://refined-digital-tailor-nine.vercel.app/",
+    githubUrl: "https://github.com/isozyn/refined-digital-tailor",
+    image: "public/Proj-img/refined-digital-tailor.png"
   },
   {
-    title: "Project Management SaaS",
-    category: "SaaS Application",
-    description: "Developed a project management tool with team collaboration features, task tracking, and automated reporting capabilities.",
-    technologies: ["Vue.js", "Express", "PostgreSQL", "Socket.io"],
-    features: "Real-time collaboration, automated reports, time tracking",
+    title: "Fraud Detection System",
+    category: "Machine Learning",  
+    description: "Advanced ML-powered fraud detection platform analyzing transaction patterns and user behavior for real-time risk assessment and prevention.",
+    technologies: ["Python", "React", "TensorFlow", "Scikit-learn", "Flask", "PostgreSQL", "Chart.js"],
+    features: "ML-based risk scoring, real-time monitoring, behavioral analysis, automated alerts, pattern recognition",
     status: "Live",
-    demoUrl: "#",
-    githubUrl: "#",
-    image: "bg-gradient-to-br from-gold to-gold-muted"
+    demoUrl: "https://starlit-croissant-5176b3.netlify.app/",
+    githubUrl: "https://github.com/isozyn/CB-FDetector",
+    image: "public/Proj-img/CB-Fdetector.png"
   },
   {
-    title: "AI-Powered Content Generator",
-    category: "Machine Learning",
-    description: "Created an AI content generation platform that helps businesses create marketing copy, blog posts, and social media content.",
-    technologies: ["Python", "FastAPI", "OpenAI API", "React"],
-    features: "AI content generation, template library, SEO optimization",
-    status: "Beta",
-    demoUrl: "#",
-    githubUrl: "#",
-    image: "bg-gradient-to-br from-silver to-silver-light"
-  },
-  {
-    title: "Mobile Fitness Tracking App",
-    category: "Mobile Development",
-    description: "Designed and developed a fitness tracking mobile app with workout planning, progress tracking, and social features.",
-    technologies: ["React Native", "Firebase", "Redux", "Charts.js"],
-    features: "Workout tracking, social sharing, progress analytics",
+    title: "Sentiment Analysis Tool",
+    category: "Data Science",  
+    description: "NLP-powered sentiment analysis platform processing text data to extract emotional insights and sentiment trends for business intelligence.",
+    technologies: ["Python", "Streamlit", "NLTK", "Pandas", "TextBlob", "Plotly", "Scikit-learn"],
+    features: "Text preprocessing, emotion detection, sentiment scoring, data visualization, batch processing",
     status: "Live",
-    demoUrl: "#",
-    githubUrl: "#",
-    image: "bg-gradient-to-br from-charcoal-light to-primary"
+    demoUrl: "https://isozyn-cb-sentiment-analyzer-main-7bwxnu.streamlit.app/",
+    githubUrl: "https://github.com/isozyn/CB-Sentiment_Analyzer",
+    image: "public/Proj-img/Sentiment Analyzer.png"
   },
   {
-    title: "Blockchain Voting System",
-    category: "Blockchain Development",
-    description: "Built a secure, transparent voting system using blockchain technology to ensure election integrity and voter privacy.",
-    technologies: ["Solidity", "Web3.js", "React", "Ethereum"],
-    features: "Blockchain security, voter anonymity, real-time results",
-    status: "Demo",
-    demoUrl: "#",
-    githubUrl: "#",
-    image: "bg-gradient-to-br from-gold-muted to-gold"
-  },
-  {
-    title: "Real Estate CRM Platform",
-    category: "Enterprise Software",
-    description: "Developed a comprehensive CRM system for real estate agencies with lead management, property listings, and client communication tools.",
-    technologies: ["Angular", "Spring Boot", "MySQL", "Docker"],
-    features: "Lead management, property CRM, automated follow-ups",
+    title: "Author Portfolio Website",
+    category: "Creative Portfolio",
+    description: "Professional author showcase platform featuring published works, writing samples, and biography for connecting with readers and publishers.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui", "Framer Motion"],
+    features: "Book gallery, writing samples, author bio, contact forms, responsive design, SEO optimization",
     status: "Live",
-    demoUrl: "#",
-    githubUrl: "#",
-    image: "bg-gradient-to-br from-primary to-charcoal"
+    demoUrl: "https://mellifluous-twilight-6840f5.netlify.app/",
+    githubUrl: "https://github.com/isozyn/refined-digital-tailor",
+    image: "public/Proj-img/Author-Portfolio.png"
   }
 ];
 
 const PortfolioSection = () => {
+  const renderImage = (project: typeof projects[0]) => {
+    // Check if it's a file path (starts with 'public/' or '/')
+    if (project.image.startsWith('public/') || project.image.startsWith('/')) {
+      return (
+        <img 
+          src={project.image} 
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+      );
+    }
+    
+    // Otherwise, treat it as a CSS class (gradient)
+    return <div className={`w-full h-full ${project.image}`}></div>;
+  };
+
   return (
     <section id="projects" className="py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -85,28 +79,13 @@ const PortfolioSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {projects.map((project, index) => (
             <div key={index} className="bg-card rounded-lg shadow-lg border overflow-hidden hover:shadow-xl transition-all duration-300 group">
               {/* Project thumbnail */}
-              <div className={`h-48 ${project.image} relative`}>
+              <div className="h-32 relative overflow-hidden">
+                {renderImage(project)}
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
-                <div className="absolute top-4 left-4">
-                  <span className="bg-white/90 text-charcoal px-3 py-1 rounded-full text-xs font-medium">
-                    {project.category}
-                  </span>
-                </div>
-                <div className="absolute top-4 right-4">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    project.status === 'Live' 
-                      ? 'bg-green-500/90 text-white' 
-                      : project.status === 'Beta'
-                      ? 'bg-yellow-500/90 text-white'
-                      : 'bg-blue-500/90 text-white'
-                  }`}>
-                    {project.status}
-                  </span>
-                </div>
                 <div className="absolute bottom-4 right-4 flex space-x-2">
                   <button 
                     onClick={() => window.open(project.demoUrl, '_blank')}
@@ -126,20 +105,16 @@ const PortfolioSection = () => {
               {/* Project content */}
               <div className="p-6">
                 <div className="mb-4">
-                  <h3 className="font-serif text-xl font-semibold text-primary mb-2">
+                  <h3 className="font-serif text-lg font-semibold text-primary mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-charcoal font-medium text-sm">{project.category}</p>
                 </div>
 
                 <p className="text-foreground text-sm leading-relaxed mb-4">
                   {project.description}
                 </p>
 
-                <div className="bg-muted p-4 rounded-lg mb-4">
-                  <h4 className="font-medium text-primary text-sm mb-2">Key Features:</h4>
-                  <p className="text-foreground text-sm">{project.features}</p>
-                </div>
+              
 
                 {/* Technology stack */}
                 <div className="border-t pt-4">
@@ -158,12 +133,6 @@ const PortfolioSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button variant="outline-professional" size="lg">
-            View All Projects
-          </Button>
         </div>
       </div>
     </section>
