@@ -37,7 +37,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-charcoal/10 rounded-full blur-3xl"></div>
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
               <img 
-                src="public/shared image (3).jfif" 
+                src="/professional-portrait.jfif" 
                 alt="Professional Portrait"
                 className="w-full h-full object-cover"
               />

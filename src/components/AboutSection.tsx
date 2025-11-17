@@ -48,7 +48,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-charcoal/10 rounded-lg blur-2xl"></div>
               <div className="relative w-full h-full rounded-lg overflow-hidden border-4 border-white shadow-xl">
                 <img 
-                  src="public\about me.jpg" 
+                  src="/about-me.jpg" 
                   alt="About Me"
                   className="w-full h-full object-cover"
                 />

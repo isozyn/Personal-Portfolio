@@ -33,7 +33,7 @@ const projects = [
     status: "Live",
     demoUrl: "https://isozyn-cb-sentiment-analyzer-main-7bwxnu.streamlit.app/",
     githubUrl: "https://github.com/isozyn/CB-Sentiment_Analyzer",
-    image: "public/Proj-img/Sentiment Analyzer.png"
+    image: "/Proj-img/Sentiment-Analyzer.png"
   },
   {
     title: "Author Portfolio Website",
