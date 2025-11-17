@@ -1,5 +1,17 @@
 import { Calendar, MapPin, Award } from "lucide-react";
 
+const getProgressColor = (level: number) => {
+  if (level >= 65) return "from-emerald-400 via-emerald-500 to-emerald-600";
+  if (level >= 55) return "from-gold via-amber-400 to-orange-500";
+  return "from-rose-400 via-red-400 to-orange-500";
+};
+
+const getLevelLabel = (level: number) => {
+  if (level >= 65) return "Advanced";
+  if (level >= 55) return "Proficient";
+  return "Developing";
+};
+
 const experiences = [
   {
     title: "AI Developer & Tech Enthusiast",
@@ -12,10 +24,42 @@ const experiences = [
 ];
 
 const skills = [
-  { category: "AI & Machine Learning", items: ["Generative AI", "Large Language Models", "AI Implementation", "Machine Learning Algorithms"] },
-  { category: "Development", items: ["React & TypeScript", "Web Development", "Data Analytics", "Sentiment Analysis"] },
-  { category: "Communication", items: ["Professional Emails", "Presentation Skills", "Active Listening", "Interpersonal Skills"] },
-  { category: "Specializations", items: ["Fraud Detection", "Portfolio Development", "AI Ethics", "Digital Innovation"] }
+  {
+    category: "AI & Machine Learning",
+    items: [
+      { name: "Generative AI", level: 68 },
+      { name: "Large Language Models", level: 64 },
+      { name: "AI Implementation", level: 70 },
+      { name: "Machine Learning Algorithms", level: 58 }
+    ]
+  },
+  {
+    category: "Development",
+    items: [
+      { name: "React & TypeScript", level: 66 },
+      { name: "Web Development", level: 70 },
+      { name: "Data Analytics", level: 60 },
+      { name: "Sentiment Analysis", level: 55 }
+    ]
+  },
+  {
+    category: "Communication",
+    items: [
+      { name: "Professional Emails", level: 69 },
+      { name: "Presentation Skills", level: 63 },
+      { name: "Active Listening", level: 65 },
+      { name: "Interpersonal Skills", level: 70 }
+    ]
+  },
+  {
+    category: "Specializations",
+    items: [
+      { name: "Fraud Detection", level: 62 },
+      { name: "Portfolio Development", level: 67 },
+      { name: "AI Ethics", level: 57 },
+      { name: "Digital Innovation", level: 65 }
+    ]
+  }
 ];
 
 const ExperienceSection = () => {
@@ -81,12 +125,23 @@ const ExperienceSection = () => {
             {skills.map((skillGroup, index) => (
               <div key={index} className="bg-card p-6 rounded-lg shadow-lg border">
                 <h4 className="font-semibold text-charcoal mb-4 text-center">{skillGroup.category}</h4>
-                <div className="space-y-2">
+                <div className="space-y-4">
                   {skillGroup.items.map((skill, i) => (
-                    <div key={i} className="flex items-center justify-between">
-                      <span className="text-sm text-foreground">{skill}</span>
-                      <div className="w-16 h-1 bg-muted rounded-full">
-                        <div className="h-full bg-gold rounded-full" style={{ width: `${85 + i * 2}%` }}></div>
+                    <div key={i}>
+                      <div className="flex items-center justify-between text-sm text-foreground mb-1">
+                        <span className="font-medium text-charcoal">{skill.name}</span>
+                        <span className="text-xs uppercase tracking-wide text-muted-foreground">
+                          {getLevelLabel(skill.level)}
+                        </span>
+                      </div>
+                      <div className="relative h-3 bg-muted/60 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full bg-gradient-to-r ${getProgressColor(skill.level)}`}
+                          style={{ width: `${skill.level}%` }}
+                        ></div>
+                        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[11px] font-semibold text-white drop-shadow">
+                          {skill.level}%
+                        </span>
                       </div>
                     </div>
                   ))}

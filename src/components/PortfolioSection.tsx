@@ -9,9 +9,9 @@ const projects = [
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui", "Lucide Icons"],
     features: "Certificate showcase, responsive design, smooth scrolling navigation, interactive UI components",
     status: "Live",
-    demoUrl: "https://refined-digital-tailor-nine.vercel.app/",
+    demoUrl: "/",
     githubUrl: "https://github.com/isozyn/refined-digital-tailor",
-    image: "public/Proj-img/refined-digital-tailor.png"
+    image: "bg-gradient-to-br from-charcoal via-gold/60 to-charcoal"
   },
   {
     title: "Fraud Detection System",
@@ -49,23 +49,26 @@ const projects = [
 ];
 
 const PortfolioSection = () => {
+  const openLink = (url?: string | null) => {
+    if (!url) return;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   const renderImage = (project: typeof projects[0]) => {
     // Check if it's a file path (starts with 'public/' or '/')
     if (project.image.startsWith('public/') || project.image.startsWith('/')) {
       return (
-        <img 
-          src={project.image} 
+        <img
+          src={project.image}
           alt={project.title}
           className="w-full h-full object-cover"
         />
       );
     }
-    
+
     // Otherwise, treat it as a CSS class (gradient)
     return <div className={`w-full h-full ${project.image}`}></div>;
-  };
-
-  return (
+  };  return (
     <section id="projects" className="py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
@@ -86,23 +89,32 @@ const PortfolioSection = () => {
               <div className="h-32 relative overflow-hidden">
                 {renderImage(project)}
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
-                <div className="absolute bottom-4 right-4 flex space-x-2">
-                  <button 
-                    onClick={() => window.open(project.demoUrl, '_blank')}
-                    className="p-2 bg-white/90 rounded-full text-charcoal hover:bg-white transition-colors"
-                  >
-                    <Globe size={16} />
-                  </button>
-                  <button 
-                    onClick={() => window.open(project.githubUrl, '_blank')}
-                    className="p-2 bg-white/90 rounded-full text-charcoal hover:bg-white transition-colors"
-                  >
-                    <Github size={16} />
-                  </button>
+                <div className="absolute top-4 left-4">
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Live' ? 'bg-emerald-500/90 text-white' : 'bg-black/60 text-white'}`}>
+                    {project.status === 'Live' ? 'Live' : 'Unavailable'}
+                  </span>
                 </div>
-              </div>
-
-              {/* Project content */}
+                <div className="absolute bottom-4 right-4 flex space-x-2">
+                  {project.status === 'Live' ? (
+                    <>
+                      <button
+                        onClick={() => openLink(project.demoUrl)}
+                        className="p-2 bg-white/90 rounded-full text-charcoal hover:bg-white transition-colors"
+                      >
+                        <Globe size={16} />
+                      </button>
+                      <button
+                        onClick={() => openLink(project.githubUrl)}
+                        className="p-2 bg-white/90 rounded-full text-charcoal hover:bg-white transition-colors"
+                      >
+                        <Github size={16} />
+                      </button>
+                    </>
+                  ) : (
+                    <span className="px-3 py-1 bg-white/80 text-charcoal text-xs rounded-full font-medium">Coming Soon</span>
+                  )}
+                </div>
+              </div>              {/* Project content */}
               <div className="p-6">
                 <div className="mb-4">
                   <h3 className="font-serif text-lg font-semibold text-primary mb-2">
