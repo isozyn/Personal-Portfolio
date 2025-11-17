@@ -11,7 +11,7 @@ const projects = [
     status: "Live",
     demoUrl: "https://a1getitdone.netlify.app/",
     githubUrl: "https://github.com/isozyn/GetItDone",
-    image: "public/Proj-img/GetitDone.png"
+    image: "/Proj-img/GetitDone.png"
   },
   {
     title: "Fraud Detection System",
@@ -22,7 +22,7 @@ const projects = [
     status: "Live",
     demoUrl: "https://starlit-croissant-5176b3.netlify.app/",
     githubUrl: "https://github.com/isozyn/CB-FDetector",
-    image: "public/Proj-img/CB-Fdetector.png"
+    image: "/Proj-img/CB-Fdetector.png"
   },
   {
     title: "Sentiment Analysis Tool",
@@ -44,7 +44,7 @@ const projects = [
     status: "Live",
     demoUrl: "https://mellifluous-twilight-6840f5.netlify.app/",
     githubUrl: "https://github.com/isozyn/refined-digital-tailor",
-    image: "public/Proj-img/Author-Portfolio.png"
+    image: "/Proj-img/Author-Portfolio.png"
   }
 ];
 
