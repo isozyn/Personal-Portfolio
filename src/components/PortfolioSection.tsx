@@ -3,15 +3,15 @@ import { ExternalLink, Github, Globe, Calendar, Code, Star } from "lucide-react"
 
 const projects = [
   {
-    title: "Refined Digital Tailor",
-    category: "Portfolio Website",
-    description: "Modern, responsive portfolio website with interactive certificate gallery, smooth animations, and professional design showcasing skills and achievements.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui", "Lucide Icons"],
-    features: "Certificate showcase, responsive design, smooth scrolling navigation, interactive UI components",
+    title: "GetItDone",
+    category: "Community Impact Platform",
+    description: "Public-facing site for a South African non-profit that highlights workshops, community programs, and impact metrics to attract volunteers and donors.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion"],
+    features: "Hero storytelling, impact stats, program highlights, donation CTAs",
     status: "Live",
-    demoUrl: "/",
-    githubUrl: "https://github.com/isozyn/refined-digital-tailor",
-    image: "bg-gradient-to-br from-charcoal via-gold/60 to-charcoal"
+    demoUrl: "https://a1getitdone.netlify.app/",
+    githubUrl: "https://github.com/isozyn/GetItDone",
+    image: "public/Proj-img/GetitDone.png"
   },
   {
     title: "Fraud Detection System",

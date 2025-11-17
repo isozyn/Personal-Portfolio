@@ -1,16 +1,8 @@
 import { Calendar, MapPin, Award } from "lucide-react";
 
-const getProgressColor = (level: number) => {
-  if (level >= 65) return "from-emerald-400 via-emerald-500 to-emerald-600";
-  if (level >= 55) return "from-gold via-amber-400 to-orange-500";
-  return "from-rose-400 via-red-400 to-orange-500";
-};
+const getProgressColor = () => "from-blue-400 via-sky-400 to-cyan-400";
 
-const getLevelLabel = (level: number) => {
-  if (level >= 65) return "Advanced";
-  if (level >= 55) return "Proficient";
-  return "Developing";
-};
+const getLevelLabel = () => "Average";
 
 const experiences = [
   {
@@ -27,37 +19,37 @@ const skills = [
   {
     category: "AI & Machine Learning",
     items: [
-      { name: "Generative AI", level: 68 },
-      { name: "Large Language Models", level: 64 },
-      { name: "AI Implementation", level: 70 },
-      { name: "Machine Learning Algorithms", level: 58 }
+      { name: "Generative AI", level: 60 },
+      { name: "Large Language Models", level: 60 },
+      { name: "AI Implementation", level: 60 },
+      { name: "Machine Learning Algorithms", level: 60 }
     ]
   },
   {
     category: "Development",
     items: [
-      { name: "React & TypeScript", level: 66 },
-      { name: "Web Development", level: 70 },
+      { name: "React & TypeScript", level: 60 },
+      { name: "Web Development", level: 60 },
       { name: "Data Analytics", level: 60 },
-      { name: "Sentiment Analysis", level: 55 }
+      { name: "Sentiment Analysis", level: 60 }
     ]
   },
   {
     category: "Communication",
     items: [
-      { name: "Professional Emails", level: 69 },
-      { name: "Presentation Skills", level: 63 },
-      { name: "Active Listening", level: 65 },
-      { name: "Interpersonal Skills", level: 70 }
+      { name: "Professional Emails", level: 60 },
+      { name: "Presentation Skills", level: 60 },
+      { name: "Active Listening", level: 60 },
+      { name: "Interpersonal Skills", level: 60 }
     ]
   },
   {
     category: "Specializations",
     items: [
-      { name: "Fraud Detection", level: 62 },
-      { name: "Portfolio Development", level: 67 },
-      { name: "AI Ethics", level: 57 },
-      { name: "Digital Innovation", level: 65 }
+      { name: "Fraud Detection", level: 60 },
+      { name: "Portfolio Development", level: 60 },
+      { name: "AI Ethics", level: 60 },
+      { name: "Digital Innovation", level: 60 }
     ]
   }
 ];
@@ -131,12 +123,12 @@ const ExperienceSection = () => {
                       <div className="flex items-center justify-between text-sm text-foreground mb-1">
                         <span className="font-medium text-charcoal">{skill.name}</span>
                         <span className="text-xs uppercase tracking-wide text-muted-foreground">
-                          {getLevelLabel(skill.level)}
+                          {getLevelLabel()}
                         </span>
                       </div>
                       <div className="relative h-3 bg-muted/60 rounded-full overflow-hidden">
                         <div
-                          className={`h-full rounded-full bg-gradient-to-r ${getProgressColor(skill.level)}`}
+                          className={`h-full rounded-full bg-gradient-to-r ${getProgressColor()}`}
                           style={{ width: `${skill.level}%` }}
                         ></div>
                         <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[11px] font-semibold text-white drop-shadow">
